@@ -1,10 +1,8 @@
 .PHONY: all
 
-OUTPUT_DIR = public_html
-PHR = vendor/farazdagi/phrozn/bin/phrozn.php
+WEB_DIR = web
 
-all: vendor
-	mkdir -p $(OUTPUT_DIR) && $(PHR) up . $(OUTPUT_DIR)
+all: runserver
 
 composer.phar:
 	curl -s https://getcomposer.org/installer | php
@@ -14,7 +12,5 @@ vendor: composer.phar
 	./composer.phar update
 	touch vendor
 
-clean:
-	rm composer.phar
-	rm -rf vendor
-	rm -rf $(OUTPUT_DIR)/*
+runserver: vendor
+	php -S localhost:8080 -t $(WEB_DIR)
