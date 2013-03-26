@@ -1,0 +1,4 @@
+vilnius_php_core:
+    resource: "@VilniusPHPCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+

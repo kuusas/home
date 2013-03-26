@@ -1,0 +1,7 @@
+parameters:
+#    vilnius_php_core.example.class: VilniusPHP\CoreBundle\Example
+
+services:
+#    vilnius_php_core.example:
+#        class: %vilnius_php_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
