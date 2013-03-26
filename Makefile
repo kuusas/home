@@ -1,7 +1,5 @@
 .PHONY: all
 
-WEB_DIR = web
-
 all: runserver
 
 composer.phar:
@@ -13,4 +11,4 @@ vendor: composer.phar
 	touch vendor
 
 runserver: vendor
-	php -S localhost:8080 -t $(WEB_DIR)
+	app/console server:run
