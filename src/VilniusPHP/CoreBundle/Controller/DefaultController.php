@@ -3,11 +3,17 @@
 namespace VilniusPHP\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    /**
+     * @Route("/hello/{name}")
+     * @Template()
+     */
+    public function indexAction($name)
     {
-        return $this->render('VilniusPHPCoreBundle:Default:index.html.twig');
+        return array('name' => $name);
     }
 }

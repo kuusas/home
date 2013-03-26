@@ -1,4 +1,5 @@
 vilnius_php_core:
-    resource: "@VilniusPHPCoreBundle/Resources/config/routing.yml"
+    resource: "@VilniusPHPCoreBundle/Controller/"
+    type:     annotation
     prefix:   /
 
