@@ -3,6 +3,7 @@
 namespace VilniusPHP\EventsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
@@ -42,6 +43,20 @@ class Event
      */
     private $facebookUrl;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Sponsor", mappedBy="events")
+     */
+    private $sponsors;
+
+    /**
+     * __construct 
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->sponsors = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -120,5 +135,15 @@ class Event
     public function getFacebookUrl()
     {
         return $this->facebookUrl;
+    }
+
+    /**
+     * Get sponsors 
+     * 
+     * @return ArrayCollection
+     */
+    public function getSponsors()
+    {
+        return $this->sponsors;
     }
 }

@@ -3,6 +3,7 @@
 namespace VilniusPHP\EventsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Sponsor
@@ -35,6 +36,24 @@ class Sponsor
      */
     private $url;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="sponsors")
+     * @ORM\JoinTable(
+     *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="sponsor_id", referencedColumnName="id")}
+     *      )
+     */
+    private $events;
+
+    /**
+     * __construct 
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -90,5 +109,15 @@ class Sponsor
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Get events 
+     * 
+     * @return ArrayCollection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }
