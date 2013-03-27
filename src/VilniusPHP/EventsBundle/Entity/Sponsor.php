@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sponsor
  *
- * @ORM\Table()
+ * @ORM\Table(name="sponsor")
  * @ORM\Entity
  */
 class Sponsor
