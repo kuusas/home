@@ -49,6 +49,11 @@ class Event
     private $sponsors;
 
     /**
+     * @ORM\OneToMany(targetEntity="Speaker", mappedBy="event")
+     */
+    private $speakers;
+
+    /**
      * __construct 
      * 
      * @return void
@@ -56,6 +61,7 @@ class Event
     public function __construct()
     {
         $this->sponsors = new ArrayCollection();
+        $this->speakers = new ArrayCollection();
     }
 
     /**
@@ -145,5 +151,15 @@ class Event
     public function getSponsors()
     {
         return $this->sponsors;
+    }
+
+    /**
+     * Get speakers
+     * 
+     * @return ArrayCollection
+     */
+    public function getSpeakers()
+    {
+        return $this->speakers;
     }
 }
