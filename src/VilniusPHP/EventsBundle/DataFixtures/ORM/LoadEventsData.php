@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use VilniusPHP\EventsBundle\Entity\Event;
 use VilniusPHP\EventsBundle\Entity\Speaker;
 use VilniusPHP\EventsBundle\Entity\Sponsor;
+use VilniusPHP\EventsBundle\Entity\Place;
 
 class LoadUserData implements FixtureInterface
 {
@@ -60,12 +61,27 @@ class LoadUserData implements FixtureInterface
         $sponsor->setUrl("http://www.estina.com/");
         $event->addSponsor($sponsor);
 
+        $place = new Place();
+        $place->setName("Northtown HUB");
+        $place->setAddress("J. Galvydžio g. 5, Vilnius");
+        $place->setMapUrl("https://maps.google.com/maps?q=5+J.+Galvyd%C5%BEio+gatv%C4%97,+Vilnius,+Vilnius+Region,+Lithuania&hl=en&ie=UTF8&ll=54.711111,25.294132&spn=0.010785,0.031843&sll=54.711309,25.293317&sspn=0.010785,0.031843&hnear=J.+Galvyd%C5%BEio+gatv%C4%97+5,+%C5%BDirm%C5%ABnai,+Vilnius,+Vilniaus+apskritis+08236,+Lithuania&t=m&z=16");
+
+        $afterparty = new Place();
+        $afterparty->setName("Alaus studija");
+        $afterparty->setAddress("S.Žukausko g. 20, Vilnius");
+        $afterparty->setMapUrl("http://goo.gl/maps/nWTTJ");
+
+        $event->setPlace($place);
+        $event->setAfterparty($afterparty);
+
         $manager->persist($event);
         $manager->persist($speaker1);
         $manager->persist($speaker2);
         $manager->persist($speaker3);
         $manager->persist($speaker4);
         $manager->persist($sponsor);
+        $manager->persist($place);
+        $manager->persist($afterparty);
 
         $manager->flush();
     }

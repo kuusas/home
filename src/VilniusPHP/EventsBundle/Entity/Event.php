@@ -61,6 +61,18 @@ class Event
     private $speakers;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Place")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
+     */
+    private $place;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Place")
+     * @ORM\JoinColumn(name="afterparty_id", referencedColumnName="id")
+     */
+    private $afterparty;
+
+    /**
      * __construct 
      * 
      * @return void
@@ -219,6 +231,54 @@ class Event
     {
         $this->sponsors[] = $sponsor;
         $sponsor->getEvents()->add($this);
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     * 
+     * @return Place
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set place 
+     * 
+     * @param Place $place 
+     *
+     * @return Place
+     */
+    public function setPlace(Place $place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get afterparty
+     * 
+     * @return Place
+     */
+    public function getAfterparty()
+    {
+        return $this->afterparty;
+    }
+
+    /**
+     * Set afterparty 
+     * 
+     * @param Place $afterparty 
+     *
+     * @return Place
+     */
+    public function setAfterparty(Place $afterparty)
+    {
+        $this->afterparty = $afterparty;
 
         return $this;
     }
