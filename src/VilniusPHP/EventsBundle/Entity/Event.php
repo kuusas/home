@@ -39,9 +39,16 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook_url", type="string", length=255)
+     * @ORM\Column(name="facebook_url", type="string", length=255, nullable=true)
      */
     private $facebookUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="github_url", type="string", length=255, nullable=true)
+     */
+    private $githubUrl;
 
     /**
      * @ORM\ManyToMany(targetEntity="Sponsor", mappedBy="events")
@@ -144,6 +151,29 @@ class Event
     }
 
     /**
+     * Set githubUrl
+     *
+     * @param string $githubUrl
+     * @return Event
+     */
+    public function setGithubUrl($githubUrl)
+    {
+        $this->githubUrl = $githubUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get githubUrl
+     *
+     * @return string 
+     */
+    public function getGithubUrl()
+    {
+        return $this->githubUrl;
+    }
+
+    /**
      * Get sponsors 
      * 
      * @return ArrayCollection
@@ -161,5 +191,35 @@ class Event
     public function getSpeakers()
     {
         return $this->speakers;
+    }
+
+    /**
+     * Add speaker 
+     * 
+     * @param Speaker $speaker 
+     *
+     * @return Event
+     */
+    public function addSpeaker(Speaker $speaker)
+    {
+        $this->speakers[] = $speaker;
+        $speaker->setEvent($this);
+
+        return $this;
+    }
+
+    /**
+     * Add sponsor 
+     * 
+     * @param Sponsor $sponsor 
+     *
+     * @return Event
+     */
+    public function addSponsor(Sponsor $sponsor)
+    {
+        $this->sponsors[] = $sponsor;
+        $sponsor->getEvents()->add($this);
+
+        return $this;
     }
 }

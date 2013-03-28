@@ -43,7 +43,7 @@ class Speaker
     private $linkedInUrl;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Event")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="speakers")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
     private $event;
