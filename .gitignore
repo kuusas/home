@@ -1,3 +1,4 @@
+composer.lock
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
@@ -6,3 +7,4 @@
 /vendor/
 /bin/
 /composer.phar
+/html/vendor/

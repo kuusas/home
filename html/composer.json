@@ -1,0 +1,13 @@
+{
+    "name": "vilniusphp/html",
+    "description": "VilniusPHP html",
+    "require": {
+        "twitter/bootstrap": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Zilvinas Kuusas",
+            "email": "zilvinas@kuusas.lt"
+        }
+    ]
+}
