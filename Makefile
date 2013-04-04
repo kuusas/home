@@ -18,3 +18,7 @@ migrations: vendor
 
 runserver: vendor
 	app/console server:run
+
+chmod:
+	@sudo chmod -R 777 app/cache app/logs
+	@echo Permissions changed.
